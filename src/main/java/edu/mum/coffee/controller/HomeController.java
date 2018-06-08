@@ -8,7 +8,7 @@ public class HomeController {
 	
 	@GetMapping({"/", "/index", "/home"})
 	public String homePage() {
-		return "home";
+		return "index";
 	}
 
 	@GetMapping({"/secure"})
