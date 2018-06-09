@@ -1,1 +1,51 @@
-Hello Boody
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Cafe</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" />
+
+
+</head>
+<body>
+
+	<!-- start banner Area -->
+	<section class="banner-area" id="home">
+		<div class="container">
+			<div
+				class="row fullscreen d-flex align-items-center justify-content-start">
+				<div class="banner-content col-lg-7">
+					<h6 class="text-white text-uppercase">Now you can feel the
+						Energy</h6>
+					<h1>
+						Start your day with <br /> a black Coffee
+					</h1>
+					<a href="#" class="primary-btn text-uppercase">Buy Now</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
+
+	<h1>Product list</h1>
+
+	<table>
+		<tr>
+			<th>NAME</th>
+			<th>PRICE</th>
+			<th>IN STOCK</th>
+		</tr>
+		<tr th:each="prod : ${prods}">
+			<td th:text="${prod.name}">Onions</td>
+			<td th:text="${prod.price}">2.41</td>
+			<td th:text="${prod.inStock}? #{true} : #{false}">yes</td>
+		</tr>
+	</table>
+
+</body>
+</html>
