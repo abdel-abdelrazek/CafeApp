@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Cafe</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" />
+
+
+</head>
+<body>
+	<form th:action="@{/order/create}"  method="post">
+
+		<label>Quantity:</label> <input type="text" name="quantity" />
+		<input type="hidden" th:value="${productId}" name="productId"/>
+		<input type="submit" value="Save" />
+
+	</form>
+
+</body>
+</html>
