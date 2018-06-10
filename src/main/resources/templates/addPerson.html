@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Cafe</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" />
+
+
+</head>
+<body>
+
+	<section class="site-section" id="section-menu">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-md-12 text-center mb-5 site-animate">
+					<h2 class="display-4">My Profile</h2>
+					<div class="row justify-content-center">
+						<div class="col-md-7">
+							<p class="lead">Far far away, behind the word mountains, far
+								from the countries Vokalia and Consonantia, there live the blind
+								texts.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- PERSONAL INFO TAB -->
+				<div class="tab-pane active" id="info"
+					style="width: 50%; height: 50%">
+					<form th:action="@{/normal/profile}" method="post" th:object="${person}">
+						<div class="form-group">
+							<label class="form-control-label">First Name</label> <input
+								type="text" th:field="*{firstName}" class="form-control" />
+								<p th:if="${#fields.hasErrors('*{firstName}')}"
+						th:errors="*{firstName}">invalid email</p>
+						</div>
+						<div class="form-group">
+							<label class="form-control-label">Last Name</label> <input
+								type="text" th:field="*{lastName}" class="form-control" />
+								<p th:if="${#fields.hasErrors('*{lastName}')}"
+						th:errors="*{lastName}">invalid email</p>
+						</div>
+						<div class="form-group">
+							<label class="form-control-label">Mobile Number</label> <input
+								type="text" th:field="*{phone}" class="form-control" />
+								<p th:if="${#fields.hasErrors('*{phone}')}"
+						th:errors="*{phone}">invalid email</p>
+						</div>
+						<!--<div class="form-group" >
+							<label class="form-control-label">email</label> <input
+								type="text" th:field="*{email}" class="form-control" />
+								<p th:if="${#fields.hasErrors('*{email}')}"
+						th:errors="*{email}">invalid email</p>
+						</div>  -->
+						<div class="margiv-top10">
+							<input type="submit" class="btn btn-primary" value="Save Changes" />
+							<input type="reset" class="btn btn-default" value="Cancel" />
+						</div>
+					</form>
+				</div>
+				<!-- /PERSONAL INFO TAB -->
+			</div>
+		</div>
+	</section>
+</body>
+</html>

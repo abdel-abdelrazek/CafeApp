@@ -5,6 +5,9 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Product {
@@ -12,8 +15,11 @@ public class Product {
 	@Id
 	@GeneratedValue
 	private int id;
+	@NotEmpty
 	private String productName;
+	@NotEmpty
 	private String description;
+	@Min(0)
 	private double price;
 	@Enumerated(EnumType.STRING)
 	private ProductType productType;

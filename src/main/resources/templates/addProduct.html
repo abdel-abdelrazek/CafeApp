@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Cafe</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" />
+
+
+</head>
+<body>
+
+	<section class="site-section" id="section-menu">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-md-12 text-center mb-5 site-animate">
+					<h2 class="display-4">Add Product</h2>
+					<div class="row justify-content-center">
+						<div class="col-md-7">
+							<p class="lead">Far far away, behind the word mountains, far
+								from the countries Vokalia and Consonantia, there live the blind
+								texts.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- PERSONAL INFO TAB -->
+				<div class="tab-pane active" id="info"
+					style="width: 50%; height: 50%">
+					<form th:action="@{/control/product/{id}(id=${product.id})}" method="post"
+						th:object="${product}">
+						<div class="form-group">
+							<label class="form-control-label">Name</label> <input type="text"
+								th:field="*{productName}" class="form-control" />
+							<p th:if="${#fields.hasErrors('*{productName}')}"
+								th:errors="*{productName}">invalid product</p>
+						</div>
+						<div class="form-group">
+							<label class="form-control-label">Price</label> <input
+								type="text" th:field="*{price}" class="form-control" />
+							<p th:if="${#fields.hasErrors('*{price}')}" th:errors="*{price}">invalid
+								price</p>
+						</div>
+
+						<div class="form-group">
+							<label class="form-control-label">ProductType</label> <input
+								type="text" th:field="*{productType}" class="form-control" />
+							<p th:if="${#fields.hasErrors('*{productType}')}"
+								th:errors="*{productType}">invalid productType</p>
+						</div>
+						<div class="form-group">
+							<label class="form-control-label">Description</label>
+							<textarea th:field="*{description}" class="form-control" rows="2"
+								cols="3"></textarea>
+							<p th:if="${#fields.hasErrors('*{description}')}"
+								th:errors="*{description}">invalid description</p>
+						</div>
+						<input type="text" th:field="*{id}"/>
+						<div class="margiv-top10">
+							<input type="submit" class="btn btn-primary" value="Add" /> <input
+								type="reset" class="btn btn-default" value="Cancel" />
+						</div>
+					</form>
+				</div>
+				<!-- /PERSONAL INFO TAB -->
+			</div>
+		</div>
+	</section>
+</body>
+</html>
