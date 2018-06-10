@@ -67,5 +67,12 @@ public class OrderController {
 
 		return "redirect:/";
 	}
+	
+	@GetMapping({ "/orders" })
+	public String getOrders(Model model) {
+
+	 model.addAttribute("orders", orderService.findAll());
+		return "orders";
+	}
 
 }

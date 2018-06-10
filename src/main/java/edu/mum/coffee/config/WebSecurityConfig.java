@@ -21,7 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/", "/home", "/index").permitAll().antMatchers("/control/**")
-				.hasRole("ADMIN").antMatchers("/normal/**").hasRole("USER")//.anyRequest().authenticated()
+				.hasRole("ADMIN").antMatchers("/normal/**").hasRole("USER").antMatchers("/normal/**").hasRole("ADMIN")//.anyRequest().authenticated()
 				.and().formLogin().loginPage("/showMyLoginPage").loginProcessingUrl("/authenticateTheUser").permitAll().and()
 				.exceptionHandling().accessDeniedPage("/access-denied").and().logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").permitAll();

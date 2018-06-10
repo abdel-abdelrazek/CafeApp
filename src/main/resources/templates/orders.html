@@ -22,12 +22,12 @@
 		<div class="col-lg-4" th:each="order : ${orders}">
 			<div class="single-menu">
 				<div class="title-div justify-content-between d-flex">
-					<h4 th:text="${prod.productName}">Cappuccino</h4>
-					<p class="price float-right" th:text="${order.price}">$49</p>
+					<h4 th:text="'By:' + ${order.person.lastName}">Cappuccino</h4>
+					<p class="price float-right" th:text="${order.orderDate}">$49</p>
 				</div>
-				<p th:text="${prod.description}">Usage of the Internet is
+				<p th:text="'Quantity:' + ${order.getQuantity()}">Usage of the Internet is
 					becoming more common due to rapid advance.</p>
-					<a th:href="@{/control/product(id=${prod.id})}">edit</a>
+					
 			</div>
 		</div>
 	</div>

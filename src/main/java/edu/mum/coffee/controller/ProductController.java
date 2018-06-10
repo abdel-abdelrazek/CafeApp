@@ -38,18 +38,18 @@ public class ProductController {
 	}
 
 	@PostMapping("/product/{id}")
-	public String editPRoduct(@PathVariable String id,@Valid Product product, BindingResult result) {
+	public String editPRoduct(@PathVariable String id, @Valid Product product, BindingResult result) {
 
 		String view = "redirect:/";
 
 		if (!result.hasErrors()) {
 
-			Product tmpProduct= 	productService.getProduct(Integer.parseInt(id));
+			Product tmpProduct = productService.getProduct(Integer.parseInt(id));
 			tmpProduct.setDescription(product.getDescription());
 			tmpProduct.setPrice(product.getPrice());
 			tmpProduct.setProductName(product.getProductName());
 			tmpProduct.setProductType(product.getProductType());
-			
+
 			productService.save(product);
 		} else {
 			view = "addProduct";
@@ -59,10 +59,28 @@ public class ProductController {
 	}
 
 	@GetMapping("/product")
-	public String Product(@RequestParam("id") String id,Model model) {
-		
-	 model.addAttribute("product", productService.getProduct(Integer.parseInt(id)));
+	public String Product(@RequestParam("id") String id, Model model) {
 
-	 return "addProduct";
+		model.addAttribute("product", productService.getProduct(Integer.parseInt(id)));
+
+		return "editProduct";
+	}
+
+	@PostMapping("/product")
+	public String addProduct(@Valid Product product, BindingResult result) {
+
+		if (!result.hasErrors()) {
+
+			productService.save(product);
+			
+			return "redirect:/";
+		}
+		return "addProduct";
+	}
+	@GetMapping("/addproduct")
+	public String addProduct(Model model) {
+
+		model.addAttribute("product", new Product());
+		return "addProduct";
 	}
 }
