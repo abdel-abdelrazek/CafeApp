@@ -19,11 +19,11 @@
 	<h1>Product list</h1>
 
 	<div class="row">
-		<div class="col-lg-4" th:each="prod : ${Products}">
+		<div class="col-lg-4" th:each="order : ${orders}">
 			<div class="single-menu">
 				<div class="title-div justify-content-between d-flex">
 					<h4 th:text="${prod.productName}">Cappuccino</h4>
-					<p class="price float-right" th:text="${prod.price}">$49</p>
+					<p class="price float-right" th:text="${order.price}">$49</p>
 				</div>
 				<p th:text="${prod.description}">Usage of the Internet is
 					becoming more common due to rapid advance.</p>
