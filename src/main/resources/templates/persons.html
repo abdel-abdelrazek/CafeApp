@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.springframework.org/security/tags">
+<head>
+<title>Cafe</title>
+<meta http-equiv="
+	Content-Type" content="text/html; charset=UTF-8" />
+
+
+
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" />
+
+
+</head>
+<body>
+
+	<h1>Product list</h1>
+
+	<div class="row">
+		<div class="col-lg-4" th:each="person : ${persons}">
+			<div class="single-menu">
+				<div class="title-div justify-content-between d-flex">
+					<h4 th:text="${person.firstName}+ ${person.lastName}">Cappuccino</h4>
+				</div>
+				<p th:text="${person.phone}">Usage of the.</p>
+				<p th:text="${person.email}">Usage of the.</p>
+				<a th:href="@{/control/product}">edit</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
