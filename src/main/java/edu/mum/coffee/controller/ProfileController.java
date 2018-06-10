@@ -41,7 +41,7 @@ public class ProfileController {
 	@PostMapping("/profile")
 	public String saveProfileData(@Valid Person person, BindingResult result) {
 
-		String view = "redirect:/profile";
+		String view = "redirect:/";
 
 		if (!result.hasErrors()) {
 			
@@ -50,7 +50,7 @@ public class ProfileController {
 
 			String userName = user.getUsername();
 			Person tmpPerson = personService.findByEmail(userName).get(0);
-			tmpPerson.setEmail(person.getEmail());
+			//tmpPerson.setEmail(person.getEmail());
 			tmpPerson.setFirstName(person.getFirstName());
 			tmpPerson.setLastName(person.getLastName());
 			tmpPerson.setPhone(person.getPhone());
