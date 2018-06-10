@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.mum.coffee.domain.Order;
+import edu.mum.coffee.domain.Orderline;
 import edu.mum.coffee.domain.Person;
 import edu.mum.coffee.service.OrderService;
 import edu.mum.coffee.service.PersonService;
@@ -57,11 +58,14 @@ public class OrderController {
 		Order order = new Order();
 		Date dt = new Date();
 		order.setOrderDate(dt);
-
+		Orderline orderline = new Orderline();
+		orderline.setQuantity(Integer.parseInt(quantity));
+		orderline.setProduct(productService.getProduct(Integer.parseInt(id)));
+		order.addOrderLine(orderline);
 		order.setPerson(personService.findByEmail(userName).get(0));
 		orderService.save(order);
 
-		return "index";
+		return "redirect:/";
 	}
 
 }
