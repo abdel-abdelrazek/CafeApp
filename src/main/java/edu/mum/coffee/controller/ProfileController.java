@@ -20,7 +20,7 @@ import edu.mum.coffee.general.NoSuchResourceException;
 import edu.mum.coffee.service.PersonService;
 
 @Controller
-
+@RequestMapping("normal")
 public class ProfileController {
 
 	@Autowired

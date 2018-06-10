@@ -13,26 +13,24 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-	
+
 	@Autowired
 	private DataSource securityDataSource;
-	
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/", "/home", "/index").permitAll().
-		antMatchers("/order/**").hasRole("ADMIN").
-		antMatchers("/cars/**").hasRole("USER")
-		.anyRequest().authenticated().and()
-		.formLogin().loginPage("/showMyLoginPage")
-		.loginProcessingUrl("/authenticateTheUser")
-		.permitAll().and().logout()
-		.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").permitAll();
+		http.authorizeRequests().antMatchers("/", "/home", "/index").permitAll().antMatchers("/control/**")
+				.hasRole("ADMIN").antMatchers("/normal/**").hasRole("USER").anyRequest().authenticated().and()
+				.formLogin().loginPage("/showMyLoginPage").loginProcessingUrl("/authenticateTheUser").permitAll().and()
+				.exceptionHandling().accessDeniedPage("/access-denied").and().logout()
+				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").permitAll();
 	}
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication().withUser("a@bc.d").password("pw").roles("ADMIN");
-		//auth.jdbcAuthentication().dataSource(securityDataSource);
+		auth.inMemoryAuthentication().withUser("b@bc.d").password("pw").roles("USER");
+		// auth.jdbcAuthentication().dataSource(securityDataSource);
 
 	}
 }

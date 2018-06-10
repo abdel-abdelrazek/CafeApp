@@ -21,7 +21,7 @@ import edu.mum.coffee.service.PersonService;
 import edu.mum.coffee.service.ProductService;
 
 @Controller
-@RequestMapping("/order")
+@RequestMapping("/normal")
 public class OrderController {
 
 	@Autowired
@@ -39,14 +39,14 @@ public class OrderController {
 		return "createOrder";
 	}
 
-	@GetMapping({ "/details" })
+	@GetMapping({ "/orderDetails" })
 	public String orderDetails(String id, Model model) {
 
 		model.addAttribute("productId", id);
 		return "orderDetails";
 	}
 
-	@PostMapping({ "/create" })
+	@PostMapping({ "/createOrder" })
 	public String createOrder(@RequestParam("quantity") String quantity, @RequestParam("productId") String id,
 			Model model) {
 

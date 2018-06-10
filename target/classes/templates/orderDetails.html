@@ -13,9 +13,9 @@
 
 </head>
 <body>
-	<form th:action="@{/order/create}"  method="post">
+	<form th:action="@{/normal/createOrder}"  method="post">
 
-		<label>Quantity:</label> <input type="text" name="quantity" />
+		<label>Quantity:</label> <input value="1" type="text" name="quantity" />
 		<input type="hidden" th:value="${productId}" name="productId"/>
 		<input type="submit" value="Save" />
 
