@@ -26,4 +26,11 @@ public class GeneralController {
 		return "access-denied";
 		
 	}
+	
+	@GetMapping("*")
+	public String exceptionHandeler() {
+		
+		return "exceptionHandeling";
+		
+	}
 }
