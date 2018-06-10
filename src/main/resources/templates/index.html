@@ -1,8 +1,10 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.springframework.org/security/tags">
 <head>
 <title>Cafe</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="
+	Content-Type" content="text/html; charset=UTF-8" />
 
 
 
@@ -25,9 +27,31 @@
 					<h1>
 						Start your day with <br /> a black Coffee
 					</h1>
-					<a th:href="@{/normal/doOrder}" class="primary-btn text-uppercase">Buy
-						Now</a>
-						<a th:href="@{/normal/profile}" class="primary-btn text-uppercase">Profile</a>
+
+					<div sec:authorize="isAuthenticated()">
+						<div sec:authorize="hasRole('ADMIN')">
+							<a th:href="@{/normal/doOrder}"
+								class="primary-btn text-uppercase">Products</a><a
+								th:href="@{/normal/doOrder}" class="primary-btn text-uppercase">Persons</a>
+							<a th:href="@{/normal/profile}"
+								class="primary-btn text-uppercase">Orders</a>
+						</div>
+						<div sec:authorize="hasRole('USER')">
+
+							<a th:href="@{/normal/doOrder}"
+								class="primary-btn text-uppercase">Buy Now</a> <a
+								th:href="@{/normal/profile}" class="primary-btn text-uppercase">Profile</a>
+
+						</div>
+						<a th:href="@{/logout}" class="primary-btn text-uppercase">
+							logout</a>
+					</div>
+					<div sec:authorize="isAnonymous()">
+						<a th:href="@{/showMyLoginPage}" class="primary-btn text-uppercase">
+							login</a>
+					</div>
+
+
 
 				</div>
 			</div>

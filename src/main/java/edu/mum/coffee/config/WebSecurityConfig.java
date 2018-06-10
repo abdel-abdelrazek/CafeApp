@@ -14,13 +14,16 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+	
+	
 	@Autowired
 	private DataSource securityDataSource;
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/", "/home", "/index").permitAll().antMatchers("/control/**")
-				.hasRole("ADMIN").antMatchers("/normal/**").hasRole("USER").anyRequest().authenticated().and()
+				.hasRole("ADMIN").antMatchers("/normal/**").hasRole("USER")//.anyRequest().authenticated()
+				.and()
 				.formLogin().loginPage("/showMyLoginPage").loginProcessingUrl("/authenticateTheUser").permitAll().and()
 				.exceptionHandling().accessDeniedPage("/access-denied").and().logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").permitAll();
