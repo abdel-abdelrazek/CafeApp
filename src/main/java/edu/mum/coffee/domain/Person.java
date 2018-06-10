@@ -8,6 +8,9 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 
+import org.hibernate.validator.constraints.Email;
+
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Person {
@@ -16,6 +19,7 @@ public class Person {
 	private long id;
 	private String firstName;
 	private String lastName;
+	@Email
 	private String email;
 	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;

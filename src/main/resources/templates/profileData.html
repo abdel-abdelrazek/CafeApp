@@ -36,19 +36,27 @@
 						<div class="form-group">
 							<label class="form-control-label">First Name</label> <input
 								type="text" th:field="*{firstName}" class="form-control" />
+								<p th:if="${#fields.hasErrors('*{firstName}')}"
+						th:errors="*{firstName}">invalid email</p>
 						</div>
 						<div class="form-group">
 							<label class="form-control-label">Last Name</label> <input
 								type="text" th:field="*{lastName}" class="form-control" />
+								<p th:if="${#fields.hasErrors('*{lastName}')}"
+						th:errors="*{lastName}">invalid email</p>
 						</div>
 						<div class="form-group">
 							<label class="form-control-label">Mobile Number</label> <input
 								type="text" th:field="*{phone}" class="form-control" />
+								<p th:if="${#fields.hasErrors('*{phone}')}"
+						th:errors="*{phone}">invalid email</p>
 						</div>
-						<div class="form-group">
+						<!--<div class="form-group" >
 							<label class="form-control-label">email</label> <input
 								type="text" th:field="*{email}" class="form-control" />
-						</div>
+								<p th:if="${#fields.hasErrors('*{email}')}"
+						th:errors="*{email}">invalid email</p>
+						</div>  -->
 						<div class="margiv-top10">
 							<input type="submit" class="btn btn-primary" value="Save Changes" />
 							<input type="reset" class="btn btn-default" value="Cancel" />
