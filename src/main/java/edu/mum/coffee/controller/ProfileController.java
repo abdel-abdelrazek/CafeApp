@@ -57,7 +57,7 @@ public class ProfileController {
 	
 			personService.savePerson(tmpPerson);
 		} else {
-			view = "redirect:/normal/profile";
+			view = "profileData";
 		}
 		return view;
 

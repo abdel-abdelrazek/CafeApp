@@ -28,6 +28,7 @@ public class Person {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
 	@Pattern(regexp="(^$|[0-9]{10})")
+	@NotEmpty
 	private String phone;
 	private boolean enable;
 
