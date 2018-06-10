@@ -26,9 +26,13 @@
 				</div>
 				<p th:text="${person.phone}">Usage of the.</p>
 				<p th:text="${person.email}">Usage of the.</p>
-				<a th:href="@{/control/product}">edit</a>
+				
 			</div>
 		</div>
+	</div>
+	<div class="row">
+	<a th:href="@{/control/person}" class="btn btn-primary">Add person</a>
+							
 	</div>
 </body>
 </html>

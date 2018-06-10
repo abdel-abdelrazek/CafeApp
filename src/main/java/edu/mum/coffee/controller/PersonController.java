@@ -37,32 +37,28 @@ public class PersonController {
 
 	}
 
-	@PostMapping("/product/{id}")
-	public String editPRoduct(@PathVariable String id,@Valid Product product, BindingResult result) {
+	@PostMapping("/person")
+	public String addPerson( @Valid Person person, BindingResult result) {
 
 		String view = "redirect:/";
 
 		if (!result.hasErrors()) {
-
-			Product tmpProduct= 	productService.getProduct(Integer.parseInt(id));
-			tmpProduct.setDescription(product.getDescription());
-			tmpProduct.setPrice(product.getPrice());
-			tmpProduct.setProductName(product.getProductName());
-			tmpProduct.setProductType(product.getProductType());
 			
-			productService.save(product);
+			personService.savePerson(person);
 		} else {
-			view = "addProduct";
+			view = "addPerson";
 		}
 		return view;
 
 	}
+	
+	@GetMapping("/person")
+	public String PersonForm( Model model) {
 
-	@GetMapping("/product")
-	public String Product(@RequestParam("id") String id,Model model) {
-		
-	 model.addAttribute("product", productService.getProduct(Integer.parseInt(id)));
+		model.addAttribute("person", new Person());
+		return "addPerson";
 
-	 return "addProduct";
 	}
+
+
 }

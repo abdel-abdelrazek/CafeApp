@@ -19,7 +19,7 @@
 			<div class="row">
 
 				<div class="col-md-12 text-center mb-5 site-animate">
-					<h2 class="display-4">My Profile</h2>
+					<h2 class="display-4">Add Person</h2>
 					<div class="row justify-content-center">
 						<div class="col-md-7">
 							<p class="lead">Far far away, behind the word mountains, far
@@ -32,7 +32,7 @@
 				<!-- PERSONAL INFO TAB -->
 				<div class="tab-pane active" id="info"
 					style="width: 50%; height: 50%">
-					<form th:action="@{/normal/profile}" method="post" th:object="${person}">
+					<form th:action="@{/control/person}" method="post" th:object="${person}">
 						<div class="form-group">
 							<label class="form-control-label">First Name</label> <input
 								type="text" th:field="*{firstName}" class="form-control" />
